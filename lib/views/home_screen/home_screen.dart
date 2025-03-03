@@ -1,9 +1,6 @@
 import 'package:kd_bazzar/common_widgets/home_buttons.dart';
 import 'package:kd_bazzar/consts/consts.dart';
 import 'package:kd_bazzar/consts/list.dart';
-import 'package:kd_bazzar/views/account_screen/account_screen.dart';
-import 'package:kd_bazzar/views/cart_screen/cart_screen.dart';
-import 'package:kd_bazzar/views/categories_screen/categories_screen.dart';
 import 'package:kd_bazzar/views/home_screen/components/featured_button.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,83 +8,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: redColor,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundImage: AssetImage(icProfile), 
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Hello User!',
-                    style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    'customer@example.com',
-                    style: TextStyle(color: Colors.white70, fontSize: 14),
-                  ),
-                ],
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home, color: darkFontGrey),
-              title: Text('Home'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.category, color: darkFontGrey),
-              title: Text('Categories'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => CategoriesScreen()));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_cart, color: darkFontGrey),
-              title: Text('Cart'),
-              onTap: () {Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));},
-            ),
-            ListTile(
-              leading: Icon(Icons.person, color: darkFontGrey),
-              title: Text('Profile'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => AccountScreen()));
-              },
-            ),
-            
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.logout, color: Colors.red),
-              title: Text('Logout'),
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text('KD Bazzar',
-        style: TextStyle(
-          fontFamily: bold,
-        )),
-        
-        centerTitle: true,
-      ),
-      body: Container(
+    return  Container(
         padding: EdgeInsets.all(12),
         color: lightGrey,
         width: context.screenWidth,
@@ -356,8 +277,7 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
     
   }
 }

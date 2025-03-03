@@ -1,13 +1,14 @@
 import 'package:kd_bazzar/consts/consts.dart';
 
-Widget customTextField({String? title, String? hint, controller}) {
+Widget customTextField({String? title, String? hint, controller, isPass}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       title!.text.color(redColor).fontFamily(semibold).size(16).make(),
       5.heightBox,
       TextFormField(
-    //    controller: controller,
+        obscureText: isPass,
+       controller: controller,
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: TextStyle(fontFamily: semibold, color: textfieldGrey),

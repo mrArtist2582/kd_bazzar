@@ -1,10 +1,21 @@
+import 'package:get/instance_manager.dart';
+import 'package:get/route_manager.dart';
 import 'package:kd_bazzar/common_widgets/bg.dart';
 import 'package:kd_bazzar/consts/consts.dart';
+// ignore: library_prefixes
+import 'package:kd_bazzar/consts/firebase_consts.dart' as FirebaseConsts;
 import 'package:kd_bazzar/consts/list.dart';
+
+import 'package:kd_bazzar/controllers/auth_controller.dart';
 import 'package:kd_bazzar/views/account_screen/components/details_card.dart';
+import 'package:kd_bazzar/views/auth_scrrens/login_screen.dart';
+
+
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,18 +45,31 @@ class AccountScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          "Dummy user".text.fontFamily(semibold).white.make(),
-                
-                          "customer@example.com".text.white.size(12).make(),
+                        /*  (FirebaseConsts.currentUser?.displayName ??
+                                  "Guest User")
+                              .text
+                              .fontFamily(semibold)
+                              .white
+                              .make(), */
+                          (FirebaseConsts.currentUser?.email ??
+                                  "No email found")
+                              .text
+                              .white
+                              .size(10)
+                              .make(),
                         ],
                       ),
                     ),
                     OutlinedButton(
                       style: OutlinedButton.styleFrom(
+                        
                         side: BorderSide(color: Colors.white),
                       ),
-                      onPressed: () {},
-                      child: logout.text.fontFamily(semibold).white.make(),
+                      onPressed: () async {
+                        await Get.put(AuthController()).signoutMethod(context);
+                        Get.offAll(() => const LoginScreen());
+                      },
+                      child: logout.text.fontFamily(semibold).size(12).white.make(),
                     ),
                   ],
                 ),
@@ -74,8 +98,6 @@ class AccountScreen extends StatelessWidget {
                 ],
               ),
 
-              
-
               // buttons section
               ListView.separated(
                     separatorBuilder: (context, index) {
@@ -100,7 +122,10 @@ class AccountScreen extends StatelessWidget {
                   .margin(EdgeInsetsDirectional.all(12))
                   .padding(EdgeInsets.symmetric(horizontal: 16))
                   .shadowSm
-                  .make().box.color(redColor).make(),
+                  .make()
+                  .box
+                  .color(redColor)
+                  .make(),
             ],
           ),
         ),
