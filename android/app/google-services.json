@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "113991633247",
+    "project_id": "kdbazzar",
+    "storage_bucket": "kdbazzar.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113991633247:android:e7093370ccc2ffd5460eea",
+        "android_client_info": {
+          "package_name": "com.example.kd_bazzar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR0vnnlYGljAmOG2Nr9Cfn2RUEW3fCwOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
