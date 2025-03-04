@@ -5,6 +5,8 @@ import 'package:kd_bazzar/consts/consts.dart';
 
 class AuthController extends GetxController {
 
+  var isLoading = false.obs;
+
 
   //  Text controllers
 
@@ -39,14 +41,18 @@ class AuthController extends GetxController {
   // storing data method
 
   storeUserData({name, password, email}) async {
-    DocumentReference store = await firestore
+    DocumentReference store = firestore
         .collection(userCollection)
         .doc(currentUser!.uid);
     store.set({
       "name" : name,
       "password" :password,
       "email"  : email,
-      'imageUrl' : ''
+      'imageUrl' : '',
+      'id' : currentUser!.uid,
+      'cart_count' : '00',
+      'order_count' : '00',
+      'wishlist_count' : '00',
     });
   }
 
